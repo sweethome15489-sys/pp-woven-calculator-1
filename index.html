@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PP Woven Calculator</title>
+</head>
+
+<body style="font-family:Arial;background:#f5f5f5;padding:20px;">
+
+<h2>PP Woven Calculator</h2>
+
+<label>Width (CM)</label><br>
+<input type="number" id="cm"><br><br>
+
+<label>GSM</label><br>
+<input type="number" id="gsm"><br><br>
+
+<label>PP Rate (₹/kg)</label><br>
+<input type="number" id="pp"><br><br>
+
+<label>CaCO₃ Rate (₹/kg)</label><br>
+<input type="number" id="co2"><br><br>
+
+<label>PP %</label><br>
+<input type="number" id="ppp" value="75"><br><br>
+
+<label>CaCO₃ %</label><br>
+<input type="number" id="co2p" value="25"><br><br>
+
+<label>Conversion Charge (₹/kg)</label><br>
+<input type="number" id="conversion"><br><br>
+
+<label>Lamination Charge (₹/kg)</label><br>
+<input type="number" id="lamination"><br><br>
+
+<button onclick="calculate()">Calculate</button>
+
+<h3>Result</h3>
+
+<p id="inch"></p>
+<p id="gram"></p>
+<p id="compound"></p>
+<p id="final"></p>
+
+<script>
+function calculate(){
+
+let cm=Number(document.getElementById("cm").value);
+let gsm=Number(document.getElementById("gsm").value);
+let pp=Number(document.getElementById("pp").value);
+let co2=Number(document.getElementById("co2").value);
+let ppp=Number(document.getElementById("ppp").value);
+let co2p=Number(document.getElementById("co2p").value);
+let conversion=Number(document.getElementById("conversion").value);
+let lamination=Number(document.getElementById("lamination").value);
+
+let inch=cm/2.54;
+let gram=(cm*gsm)/100;
+
+let compound=((pp*ppp)+(co2*co2p))/100;
+
+let finalcost=compound+conversion+lamination;
+
+document.getElementById("inch").innerHTML="Width = "+inch.toFixed(2)+" inch";
+document.getElementById("gram").innerHTML="Weight = "+gram.toFixed(2)+" g/m";
+document.getElementById("compound").innerHTML="Compound Rate = ₹"+compound.toFixed(2)+"/kg";
+document.getElementById("final").innerHTML="Final Cost = ₹"+finalcost.toFixed(2)+"/kg";
+
+}
+</script>
+
+</body>
+</html>
