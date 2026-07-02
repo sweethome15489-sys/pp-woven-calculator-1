@@ -1,74 +1,97 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PP Woven Calculator</title>
+
+<title>PP Woven Calculator Pro</title>
+
+<link rel="stylesheet" href="style.css">
+
 </head>
 
-<body style="font-family:Arial;background:#f5f5f5;padding:20px;">
+<body>
 
-<h2>PP Woven Calculator</h2>
+<div class="container">
 
-<label>Width (CM)</label><br>
-<input type="number" id="cm"><br><br>
+<div class="header">
+<h1>PP Woven Calculator Pro</h1>
+<p>Professional Fabric Cost Calculator</p>
+</div>
 
-<label>GSM</label><br>
-<input type="number" id="gsm"><br><br>
+<div class="card">
 
-<label>PP Rate (₹/kg)</label><br>
-<input type="number" id="pp"><br><br>
+<h2>Fabric Details</h2>
 
-<label>CaCO₃ Rate (₹/kg)</label><br>
-<input type="number" id="co2"><br><br>
+<label>Width (CM)</label>
+<input type="number" id="cm" placeholder="Enter Width">
 
-<label>PP %</label><br>
-<input type="number" id="ppp" value="75"><br><br>
+<label>GSM</label>
+<input type="number" id="gsm" placeholder="Enter GSM">
 
-<label>CaCO₃ %</label><br>
-<input type="number" id="co2p" value="25"><br><br>
+<label>Mesh</label>
+<input type="text" id="mesh" placeholder="10×10">
 
-<label>Conversion Charge (₹/kg)</label><br>
-<input type="number" id="conversion"><br><br>
+<label>Denier</label>
+<input type="number" id="denier" placeholder="590">
 
-<label>Lamination Charge (₹/kg)</label><br>
-<input type="number" id="lamination"><br><br>
+</div>
 
-<button onclick="calculate()">Calculate</button>
+<div class="card">
 
-<h3>Result</h3>
+<h2>Raw Material</h2>
 
-<p id="inch"></p>
-<p id="gram"></p>
-<p id="compound"></p>
-<p id="final"></p>
+<label>PP Rate (₹/kg)</label>
+<input type="number" id="pp" placeholder="140">
 
-<script>
-function calculate(){
+<label>CaCO₃ Rate (₹/kg)</label>
+<input type="number" id="co2" placeholder="42">
 
-let cm=Number(document.getElementById("cm").value);
-let gsm=Number(document.getElementById("gsm").value);
-let pp=Number(document.getElementById("pp").value);
-let co2=Number(document.getElementById("co2").value);
-let ppp=Number(document.getElementById("ppp").value);
-let co2p=Number(document.getElementById("co2p").value);
-let conversion=Number(document.getElementById("conversion").value);
-let lamination=Number(document.getElementById("lamination").value);
+<label>PP %</label>
+<input type="number" id="ppp" value="75">
 
-let inch=cm/2.54;
-let gram=(cm*gsm)/100;
+<label>CaCO₃ %</label>
+<input type="number" id="co2p" value="25">
 
-let compound=((pp*ppp)+(co2*co2p))/100;
+<label>Conversion Charge</label>
+<input type="number" id="conversion" placeholder="18">
 
-let finalcost=compound+conversion+lamination;
+<label>Lamination Charge</label>
+<input type="number" id="lamination" placeholder="6">
 
-document.getElementById("inch").innerHTML="Width = "+inch.toFixed(2)+" inch";
-document.getElementById("gram").innerHTML="Weight = "+gram.toFixed(2)+" g/m";
-document.getElementById("compound").innerHTML="Compound Rate = ₹"+compound.toFixed(2)+"/kg";
-document.getElementById("final").innerHTML="Final Cost = ₹"+finalcost.toFixed(2)+"/kg";
+<button onclick="calculate()">
+Calculate
+</button>
 
-}
-</script>
+</div>
+
+<div class="card">
+
+<h2>Result</h2>
+
+<div class="result">
+<span>Width</span>
+<b id="inch">-</b>
+</div>
+
+<div class="result">
+<span>Weight</span>
+<b id="gram">-</b>
+</div>
+
+<div class="result">
+<span>Compound Rate</span>
+<b id="compound">-</b>
+</div>
+
+<div class="result">
+<span>Final Cost</span>
+<b id="final">-</b>
+</div>
+
+</div>
+
+<script src="script.js"></script>
 
 </body>
 </html>
